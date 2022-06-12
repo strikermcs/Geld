@@ -1,0 +1,3 @@
+<template>
+Planning.vue
+</template>
