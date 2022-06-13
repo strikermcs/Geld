@@ -1,21 +1,21 @@
 <template>
   <w-toolbar shadow
-  bg-color="primary"
-  color="white"
-  height="5em"
-  class="py0"
+  bg-color="warning"
+  color="primary-dark3"
+  height="4em"
+  class="py0 tool_bar"
   >
     <div class="burger_menu" @click="burgerMenuClick">
         <w-icon v-if="menuActive" size="2em">mdi mdi-hamburger-remove</w-icon>
         <w-icon v-else size="2em">mdi mdi-hamburger-plus</w-icon>
     </div>
     <div class="title2">Geld</div>
-    <span class="ml12">{{$date(date, 'datetime')}}</span>
+    <span class="ml12 date_time">{{$date(date, 'datetime')}}</span>
     <div class="spacer"></div>
     <w-divider class="mr5" vertical></w-divider>
     <w-menu show-on-hover>
       <template #activator="{ on }">
-        <w-button v-on="on" lg>
+        <w-button v-on="on" bg-color="warning" lg>
           Вася Тормоз
           <w-icon class="ml1">mdi mdi-menu-down</w-icon>
         </w-button>
@@ -66,9 +66,23 @@ export default {
 
 
 <style scoped>
+
+.tool_bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 .burger_menu{
   cursor: pointer;
   margin-right: 10px;
+}
+
+@media screen and (max-width: 540px) {
+  .date_time{
+    display: none;
+  }
+
 }
 </style>
 

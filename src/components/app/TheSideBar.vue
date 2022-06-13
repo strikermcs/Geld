@@ -1,14 +1,17 @@
 <template>
   <w-toolbar 
   vertical
-  width="15em"
+  width="16em"
   bg-color="secondary"
+  class="nav"
+  shadow
   >
     <div class="navbar">
       <w-list
       :items="links"
       nav
       hover
+      color="grey-dark5"
       class="title3 mt9"
       >
       </w-list>
@@ -32,6 +35,19 @@ export default {
 
 <style scoped>
 .navbar {
-  height: 90vh;
+  height: 91.5vh;
+}
+
+.nav{
+  margin-top: 64px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .nav{
+    position: fixed;
+    left: 0;
+    z-index: 10;
+  }
 }
 </style>

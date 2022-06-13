@@ -11,6 +11,14 @@
     <main class="grow">
      <router-view />
     </main>
+    <div class="add-record-button">
+      <w-button class="pa7 record_button" 
+      bg-color="blue" 
+      icon="mdi mdi-plus" 
+      route="/record"
+      color="white"
+      ></w-button>
+    </div>
   </w-flex>
 </template>
 
@@ -36,5 +44,20 @@ export default {
 </script>
 
 <style scoped>
+  .add-record-button{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+  }
 
+  @media screen and (max-width: 900px) {
+    .add-record-button {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    .record_button {
+      padding: 20px;
+    }
+  }
 </style>
