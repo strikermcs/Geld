@@ -3,8 +3,8 @@
     <h1 class="text-center">Geld</h1>
     <w-card title="Авторизация" bg-color="white">
       <w-form v-model="valid">
-        <w-input label="Email" type="email" class="form_input mb3" :validators="[validators.required, validators.email]"></w-input>
-        <w-input label="Password" type="password" class="form_input mb5" :validators="[validators.required]"></w-input>
+        <w-input label="Email" type="email" v-model="email" class="form_input mb3" :validators="[validators.required, validators.email]"></w-input>
+        <w-input label="Password" type="password" v-model="password" class="form_input mb5" :validators="[validators.required]"></w-input>
         <w-button type="submit" bg-color="warning" width="100%" @click="submitHandler">Войти</w-button>
         <div class="text-center mt5">
           <p>Нет аккаунта? <span>
@@ -20,9 +20,13 @@
 
 
 <script>
+import { useAuthStore } from '../store/auth';
+import { mapActions } from 'pinia';
 
 export default {
   data: () => ({
+    email: null,
+    password: null,
     valid: false,
     validators: {
       required: value => !!value || 'This field is required',
@@ -33,8 +37,13 @@ export default {
     }
   }),
   methods:{
+    ...mapActions(useAuthStore, ['login']),
+
     submitHandler(){
-      console.log(this.valid)
+      if(this.valid){
+        this.login(this.email, this.password)
+        this.$router.push('/')
+      }
     }
   }
 }

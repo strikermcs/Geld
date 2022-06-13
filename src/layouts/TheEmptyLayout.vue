@@ -4,7 +4,11 @@
   v-model="overlay"
   persistent
   >
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <w-transition-twist>
+        <component :is="Component" />
+      </w-transition-twist>
+    </router-view>
   </w-overlay>
 </template>
 

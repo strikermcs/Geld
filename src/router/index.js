@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import firebase from 'firebase/compat/app'
 
   const routes = [
     {
@@ -79,5 +80,19 @@ import { createRouter, createWebHistory } from 'vue-router'
     history: createWebHistory(),
     routes
  })
+
+
+ router.beforeEach((to, from, next) => {
+  const currentUser = firebase.auth().currentUser
+  const requireAuth = to.matched.some(record => record.meta.auth)
+
+  if (requireAuth && !currentUser){
+    next('/login?message=login')
+  }else{
+    next()
+  }
+  
+})
+
 
 export default router
