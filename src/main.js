@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import WaveUI from 'wave-ui'
 import datePlugin from './plugins/date.plugin'
+import currencyPlugin from './plugins/currency.plugin'
 import { createPinia } from 'pinia'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
@@ -32,9 +33,11 @@ firebase.initializeApp({
 app.use(router)
 app.use(createPinia())
 app.use(datePlugin)
+app.use(currencyPlugin)
+app.mount('#app')
 
-firebase.auth().onAuthStateChanged(() => {
-  app.mount('#app')
-})
+// firebase.auth().onAuthStateChanged(() => {
+ 
+// })
 
 

@@ -16,13 +16,14 @@
     <w-menu show-on-hover>
       <template #activator="{ on }">
         <w-button v-on="on" bg-color="warning" lg>
-          Вася Тормоз
+           {{name}}
           <w-icon class="ml1">mdi mdi-menu-down</w-icon>
         </w-button>
       </template>
        <w-list
        :items="userMenuItems"
        class="title5"
+       @item-click="menuClickHandle"
       nav
        >
           <template #item="{ item }">
@@ -35,6 +36,10 @@
 </template>
 
 <script>
+import { useInfoStore } from '../../store/info'
+import { mapState } from 'pinia' 
+import { useAuthStore } from '../../store/auth'
+import { mapActions } from 'pinia'
 
 export default {
   props: ['menuActive'],
@@ -43,12 +48,26 @@ export default {
         interval: null,
         userMenuItems: [
           {label: 'Профиль', icon: 'mdi mdi-face-man', route: '/profile'},
-          {label: 'Выйти', icon: 'mdi mdi-power', route: '/login' },
+          {label: 'Выйти', icon: 'mdi mdi-power', route: "/login" },
         ]
   }),
   methods:{
+    ...mapActions(useAuthStore, ['logout']),
+
     burgerMenuClick(){
       this.$emit('burgerClick')
+    },
+    async menuClickHandle(item){
+      if(item.route === '/login'){
+        await this.logout()
+      } 
+    }
+  },
+  computed:{
+    ...mapState(useInfoStore, ['getUserName']),
+
+    name(){
+      return this.getUserName
     }
   },
   mounted(){

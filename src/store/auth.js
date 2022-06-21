@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import firebase from 'firebase/compat/app'
 import { useErrorStore } from './error'
 import { useInfoStore } from './info'
+import { getUid } from './common'
 
 
 export const useAuthStore = defineStore('Auth', {
@@ -10,7 +11,7 @@ export const useAuthStore = defineStore('Auth', {
       async login(email, password){
         try {
 
-          await firebase.auth().singInWithEmailAndPassword(email, password)         
+          await firebase.auth().signInWithEmailAndPassword(email, password)         
         
         } catch (e) {
           const errorStore = useErrorStore()
@@ -43,7 +44,3 @@ export const useAuthStore = defineStore('Auth', {
     }
 })
 
-function getUid(){
-  const user = firebase.auth().currentUser
-  return user ? user.uid : null
-}

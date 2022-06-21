@@ -54,7 +54,7 @@ import firebase from 'firebase/compat/app'
     },
 
     {
-      path: '/',
+      path: '/user',
       name: 'Empty',
       component: () => import('../layouts/TheEmptyLayout.vue'),
       children: [
@@ -87,7 +87,7 @@ import firebase from 'firebase/compat/app'
   const requireAuth = to.matched.some(record => record.meta.auth)
 
   if (requireAuth && !currentUser){
-    next('/login?message=login')
+    next('/login')
   }else{
     next()
   }

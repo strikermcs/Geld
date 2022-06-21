@@ -1,11 +1,18 @@
 import firebase from 'firebase/compat/app'
 import { defineStore } from 'pinia'
 import { useErrorStore } from './error'
+import { getUid } from './common'
 
 export const useInfoStore = defineStore('info', {
   state: () => ({
     info: {}
   }),
+
+  getters: {
+    getUserName(state) {
+      return state.info.name
+    }
+  },
 
   actions: {
     
@@ -42,7 +49,3 @@ export const useInfoStore = defineStore('info', {
 })
 
 
-function getUid(){
-  const user = firebase.auth().currentUser
-  return user ? user.uid : null
-}

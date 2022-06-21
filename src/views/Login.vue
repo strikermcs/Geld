@@ -39,9 +39,9 @@ export default {
   methods:{
     ...mapActions(useAuthStore, ['login']),
 
-    submitHandler(){
+    async submitHandler(){
       if(this.valid){
-        this.login(this.email, this.password)
+        await this.login(this.email, this.password)
         this.$router.push('/')
       }
     }
