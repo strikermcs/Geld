@@ -17,6 +17,7 @@
       <w-input label="Лимит категории"
       :validators="[validators.required, validators.minSum]"
       v-model="limit"
+      type="number"
       class="mb7"
       ></w-input>
       <w-button type="submit" lg @click="submitHandler">
