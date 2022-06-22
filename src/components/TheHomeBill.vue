@@ -23,14 +23,10 @@ export default {
   }),
   computed:{
     ...mapState(useInfoStore, ['info']),
-
-    base(){
-      return this.info.bill / (this.rates['UAH'] / this.rates['EUR'])
-    }
   },
   methods:{
     getCurrency(currency){
-      return Math.floor(this.base * this.rates[currency])
+      return Math.floor(this.info.bill * this.rates[currency])
     }
   }
 }
