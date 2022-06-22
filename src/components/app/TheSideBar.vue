@@ -2,7 +2,7 @@
   <w-toolbar 
   vertical
   width="16em"
-  bg-color="secondary"
+  bg-color="info-light2"
   class="nav"
   shadow
   >

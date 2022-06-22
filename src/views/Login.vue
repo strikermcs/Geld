@@ -5,7 +5,7 @@
       <w-form v-model="valid">
         <w-input label="Email" type="email" v-model="email" class="form_input mb3" :validators="[validators.required, validators.email]"></w-input>
         <w-input label="Password" type="password" v-model="password" class="form_input mb5" :validators="[validators.required]"></w-input>
-        <w-button type="submit" bg-color="warning" width="100%" @click="submitHandler">Войти</w-button>
+        <w-button type="submit" bg-color="warning-dark1" color="white" width="100%" @click="submitHandler">Войти</w-button>
         <div class="text-center mt5">
           <p>Нет аккаунта? <span>
             <router-link to="/register" class="link">

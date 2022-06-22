@@ -1,6 +1,6 @@
 <template>
   <w-toolbar shadow
-  bg-color="warning"
+  bg-color="warning-dark1"
   color="primary-dark3"
   height="4em"
   class="py0 tool_bar"
@@ -15,7 +15,7 @@
     <w-divider class="mr5" vertical></w-divider>
     <w-menu show-on-hover>
       <template #activator="{ on }">
-        <w-button v-on="on" bg-color="warning" lg class="mr7">
+        <w-button v-on="on" bg-color="#FF8800" lg class="mr7">
            {{name}}
           <w-icon class="ml1">mdi mdi-menu-down</w-icon>
         </w-button>
