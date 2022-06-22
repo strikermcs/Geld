@@ -85,8 +85,10 @@ export default {
   mounted(){
     this.selectedCategory = this.getCategoryItems[0]
     this.selected = this.getCategoryItems[0]
-    this.title = this.selectedCategory.label
-    this.limit = this.selectedCategory.limit
+    if(this.selectedCategory){
+      this.title = this.selectedCategory.label
+      this.limit = this.selectedCategory.limit
+    }
   }
 }
 </script>
